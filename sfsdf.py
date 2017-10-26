@@ -53,9 +53,6 @@ def first(text):
     except:
         print("Неожиданная ошибка.")
 
-
-# first("2,2,2,2,2,2")
-
 def second(text):
     try:
 
@@ -84,5 +81,37 @@ def second(text):
     except:
         print("Неожиданная ошибка.")
 
+def third(text):
+    try:
+        arr = []
+        arr2 = text.split(",")
+        if len(arr2) >= 4:
+            for i in range(4):
+                arr.append(float(arr2[i]))
+        else:
+            for i in range(4):
+                arr.append(0)
+        r1 = arr[0]
+        x1 = arr[1]
+        y2 = arr[2]
+        r2 = arr[3]
+        circle1 = plt.Circle((0, 0), r1, color='b', fill=False)
+        circle2 = plt.Circle((x1, y2), r1, color='r', fill=False)
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        ax.add_artist(circle1)
+        ax.add_artist(circle2)
+        ax.grid(color='grey', linestyle='-', linewidth=0.5)
+        plt.ylim(-100, 100)
+        plt.xlim(-100, 100)
+        plt.show()
+    except:
+        print("Неожиданная ошибка.")
 
-second("20,2,3")
+n= int(input("Введите номер уравнения"))
+if n==1:
+    first("2,2,2,2,2,2")
+elif n==2:
+    second("20,2,3")
+elif n==3:
+    third("20,10,10,20")
