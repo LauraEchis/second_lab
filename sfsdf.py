@@ -49,6 +49,7 @@ def first(text):
             a += 1
         plt.ylim(-10, 10)
         plt.xlim(-10, 10)
+        ax.grid(color='grey', linestyle='-', linewidth=0.5)
         plt.show()
     except:
         print("Неожиданная ошибка.")
@@ -75,8 +76,8 @@ def second(text):
         line, = ax.plot(x, y, picker=5)
         ax.add_artist(circle2)
         ax.grid(color='grey', linestyle='-', linewidth=0.5)
-        plt.ylim(-100, 100)
-        plt.xlim(-100, 100)
+        plt.ylim(-30, 30)
+        plt.xlim(-30, 30)
         plt.show()
     except:
         print("Неожиданная ошибка.")
@@ -102,8 +103,8 @@ def third(text):
         ax.add_artist(circle1)
         ax.add_artist(circle2)
         ax.grid(color='grey', linestyle='-', linewidth=0.5)
-        plt.ylim(-100, 100)
-        plt.xlim(-100, 100)
+        plt.ylim(-30, 40)
+        plt.xlim(-30, 40)
         plt.show()
     except:
         print("Неожиданная ошибка.")
