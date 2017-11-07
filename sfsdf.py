@@ -12,7 +12,7 @@ import matplotlib.lines as lines
 
 
 class Calculator:
-    def first(text):
+    def first(self, text):
         arr = []
         arr2 = text.split(",")
         if len(arr2) >= 6:
@@ -55,7 +55,7 @@ class Calculator:
         except:
             print("Неожиданная ошибка.")
 
-    def second(text):
+    def second(self, text):
         try:
 
             arr = []
@@ -83,7 +83,7 @@ class Calculator:
         except:
             print("Неожиданная ошибка.")
 
-    def third(text):
+    def third(self, text):
         try:
             arr = []
             arr2 = text.split(",")
@@ -110,7 +110,7 @@ class Calculator:
         except:
             print("Неожиданная ошибка.")
 
-    def second_equation(text):
+    def second_equation(self, text):
         arr = []
         arr2 = text.split(",")
         if len(arr2) >= 3:
@@ -140,7 +140,7 @@ class Calculator:
             by = y0 + a * mult
             return ("Две общие точки" + '\n' + str(ax) + " " + str(ay) + '\n' + str(bx) + " " + str(by))
 
-    def third_equation(text):
+    def third_equation(self, text):
         arr = []
         arr2 = text.split(",")
         if len(arr2) >= 4:
