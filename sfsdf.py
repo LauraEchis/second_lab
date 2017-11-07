@@ -119,7 +119,7 @@ class Calculator:
         else:
             for i in range(3):
                 arr.append(0)
-        r = math.sqrt(arr[0])
+        r = arr[0]
         b = -1
         a = arr[1]
         c = arr[2]
