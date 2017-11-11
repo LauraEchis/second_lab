@@ -11,6 +11,7 @@ from matplotlib.widgets import Button
 import matplotlib.lines as lines
 
 
+
 class Calculator:
     def first(self, text):
         arr = []
@@ -43,10 +44,10 @@ class Calculator:
                     f2 = 0
                     f3 = 0
                     f4 = 0
-                line, = plt.plot(t, f)
-                line, = plt.plot(t, f2)
-                line, = plt.plot(t, f3)
-                line, = plt.plot(t, f4)
+                line, = plt.plot(t, f, 'b')
+                line, = plt.plot(t, f2, 'r')
+                line, = plt.plot(t, f3, 'b')
+                line, = plt.plot(t, f4, 'r')
                 a += 1
             plt.ylim(-10, 10)
             plt.xlim(-10, 10)
@@ -111,6 +112,100 @@ class Calculator:
             plt.show()
         except:
             print("Неожиданная ошибка.")
+
+
+    @staticmethod
+    def first_equation(text):
+
+        arr = []
+        arr2 = text.split(",")
+        if len(arr2) == 6:
+            for i in range(6):
+                arr.append(float(arr2[i]))
+        else:
+            for i in range(6):
+                arr.append(0)
+        a1 = arr[0]
+        b1 = arr[1]
+        c1 = arr[2]
+        a2 = arr[3]
+        b2 = arr[4]
+        c2 = arr[5]
+        print(arr)
+        x = -math.pi
+        x1 = 0
+        pii_i2 = math.pi
+        res_x_1 = []
+        res_y_1 = []
+
+        res_x = []
+        res_y = []
+        while x < math.pi:
+            try:
+                y_arccos_1 = math.acos((c1 - a1 * math.tan(x)) / b1)
+                y_arccos_2 = -math.acos((c1 - a1 * math.tan(x)) / b1)
+
+                y_arcsin_1 = math.asin((c2 - a2 * math.cos(x)) / b2)
+                y_arcsin_2 = math.pi - math.asin((c2 - a2 * math.cos(x)) / b2)
+
+                mult1 = math.fabs(y_arccos_1 - y_arcsin_1)
+                mult2 = math.fabs(y_arccos_1 - y_arcsin_2)
+                mult3 = math.fabs(y_arccos_2 - y_arcsin_1)
+                mult4 = math.fabs(y_arccos_2 - y_arcsin_2)
+
+                if mult1 < 0.01 or mult2 < 0.01:
+                    if round(x, 1) not in res_x_1 and round(y_arccos_1, 1) not in res_y_1:
+                        if round(x, 2) == -0.00:
+                            res_x.append(0.00)
+                            res_y.append(round(y_arccos_1, 2))
+                            res_x_1.append(0.0)
+                            res_y_1.append(round(y_arccos_1, 1))
+                        elif round(y_arccos_1, 2) == -0.00:
+                            res_x.append(round(x, 2))
+                            res_y.append(0.00)
+                            res_x_1.append(round(x, 1))
+                            res_y_1.append(0.0)
+
+                        else:
+                            res_x.append(round(x, 2))
+                            res_y.append(round(y_arccos_1, 2))
+                            res_x_1.append(round(x, 1))
+                            res_y_1.append(round(y_arccos_1, 1))
+
+                if mult3 < 0.01 or mult4 < 0.01:
+                    if round(x, 1) not in res_x_1 and round(y_arccos_2, 1) not in res_y_1:
+                        if round(x, 2) == -0.00:
+                            res_x.append(0.00)
+                            res_y.append(round(y_arccos_2, 2))
+                            res_x_1.append(0.0)
+                            res_y_1.append(round(y_arccos_2, 1))
+                        elif round(y_arccos_1, 2) == -0.00:
+                            res_x.append(round(x, 2))
+                            res_y.append(0.00)
+                            res_x_1.append(round(x, 1))
+                            res_y_1.append(0.0)
+
+                        else:
+                            res_x.append(round(x, 2))
+                            res_y.append(round(y_arccos_2, 2))
+                            res_x_1.append(round(x, 1))
+                            res_y_1.append(round(y_arccos_2, 1))
+
+                            # print(str(round(x, 2)) + " " + str(round(y_arccos_2, 2)))
+            except BaseException:
+                pass
+            x += 0.0001
+
+        if len(res_x)==0:
+            return ("Общих точек нет")
+        elif len(res_x)==1:
+            return ("Одна общая точка" + str(res_x[0]) + " " + str(res_y[0]))
+        else:
+            return ("Две общие точки на расстоянии 2πk" + '\n' + str(res_x[0]) + " " + str(res_y[0]) + '\n' + str(res_x[1]) + " " + str(res_y[1]))
+
+
+
+
 
     @staticmethod
     def second_equation(text):
