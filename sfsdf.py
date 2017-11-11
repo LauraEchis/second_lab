@@ -11,9 +11,9 @@ from matplotlib.widgets import Button
 import matplotlib.lines as lines
 
 
-
 class Calculator:
-    def first(self, text):
+    @staticmethod
+    def first(text):
         arr = []
         arr2 = text.split(",")
         if len(arr2) >= 6:
@@ -113,7 +113,6 @@ class Calculator:
         except:
             print("Неожиданная ошибка.")
 
-
     @staticmethod
     def first_equation(text):
 
@@ -196,16 +195,13 @@ class Calculator:
                 pass
             x += 0.0001
 
-        if len(res_x)==0:
+        if len(res_x) == 0:
             return ("Общих точек нет")
-        elif len(res_x)==1:
+        elif len(res_x) == 1:
             return ("Одна общая точка" + str(res_x[0]) + " " + str(res_y[0]))
         else:
-            return ("Две общие точки на расстоянии 2πk" + '\n' + str(res_x[0]) + " " + str(res_y[0]) + '\n' + str(res_x[1]) + " " + str(res_y[1]))
-
-
-
-
+            return ("Две общие точки на расстоянии 2πk" + '\n' + str(res_x[0]) + " " + str(res_y[0]) + '\n' + str(
+                res_x[1]) + " " + str(res_y[1]))
 
     @staticmethod
     def second_equation(text):
@@ -221,7 +217,7 @@ class Calculator:
         b = -1
         a = arr[1]
         c = arr[2]
-        return (r + " " + b + " " + a + " " + c)
+        # return (r + " " + b + " " + a + " " + c)
         x0 = -a * c / (a * a + b * b)
         y0 = -b * c / (a * a + b * b)
         if (c * c > r * r * (a * a + b * b) + 0.001):

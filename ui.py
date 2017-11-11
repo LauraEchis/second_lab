@@ -3,23 +3,28 @@ from sfsdf import Calculator
 
 root = Tk()
 root.title("Решения уравнений")
-root.geometry("800x400")
-frame1 = Frame(root, bg='green', bd=5)
-frame2 = Frame(root, bg='red', bd=5)
-frame3 = Frame(root, bg='green', bd=5)
+root.geometry("650x400")
+frame1 = Frame(root, bg='cyan', bd=5)
+frame2 = Frame(root, bg='magenta', bd=5)
+frame3 = Frame(root, bg='cyan', bd=5)
 
 
 def first(event):
-    Calculator.first(
-        text=(a1.get() + ',' + b1.get() + ',' + c1.get() + ',' + a2.get() + ',' + b2.get() + ',' + c2.get()))
+    text = a1.get() + ',' + b1.get() + ',' + c1.get() + ',' + a2.get() + ',' + b2.get() + ',' + c2.get()
+    vivod.insert(END, '\nПервая система уравнений\n' + Calculator.first_equation(text) + '\n')
+    Calculator.first(text)
 
 
 def second(event):
-    Calculator.second(r.get() + ',' + k.get() + ',' + b.get())
+    text = r.get() + ',' + k.get() + ',' + b.get()
+    vivod.insert(END, '\nВторая система уравнений\n' + Calculator.second_equation(text) + '\n')
+    Calculator.second(text)
 
 
 def third(event):
-    Calculator.third(r1.get() + ',' + x.get() + ',' + y.get() + ',' + r2.get())
+    text = r1.get() + ',' + x.get() + ',' + y.get() + ',' + r2.get()
+    vivod.insert(END, '\nТретья система уравнений\n' + Calculator.third_equation(text) + '\n')
+    Calculator.third(text)
 
 
 a1l = Label(frame1)
@@ -99,9 +104,9 @@ button3 = Button(frame3, text='Решить третью систему урав
 button3.bind("<1>", third)
 button3.grid(row=4, columnspan=2)
 
-textbox4 = Text(root, width=100, height=20)
-textbox4.grid(row=1, columnspan=3)
-
+vivod = Text(root)
+vivod.grid(row=1, columnspan=3)
+vivod.insert(1.0, 'WELCOME\n')
 frame1.grid(row=0, column=0)
 frame2.grid(row=0, column=1)
 frame3.grid(row=0, column=2)
