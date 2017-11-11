@@ -55,7 +55,8 @@ class Calculator:
         except:
             print("Неожиданная ошибка.")
 
-    def second(self, text):
+    @staticmethod
+    def second(text):
         try:
 
             arr = []
@@ -83,7 +84,8 @@ class Calculator:
         except:
             print("Неожиданная ошибка.")
 
-    def third(self, text):
+    @staticmethod
+    def third(text):
         try:
             arr = []
             arr2 = text.split(",")
@@ -110,7 +112,8 @@ class Calculator:
         except:
             print("Неожиданная ошибка.")
 
-    def second_equation(self, text):
+    @staticmethod
+    def second_equation(text):
         arr = []
         arr2 = text.split(",")
         if len(arr2) == 3:
@@ -123,7 +126,7 @@ class Calculator:
         b = -1
         a = arr[1]
         c = arr[2]
-        return (r + " " + b + " " + a+ " " +c)
+        return (r + " " + b + " " + a + " " + c)
         x0 = -a * c / (a * a + b * b)
         y0 = -b * c / (a * a + b * b)
         if (c * c > r * r * (a * a + b * b) + 0.001):
@@ -140,7 +143,8 @@ class Calculator:
             by = y0 + a * mult
             return ("Две общие точки" + '\n' + str(ax) + " " + str(ay) + '\n' + str(bx) + " " + str(by))
 
-    def third_equation(self, text):
+    @staticmethod
+    def third_equation(text):
         arr = []
         arr2 = text.split(",")
         if len(arr2) >= 4:
@@ -154,53 +158,53 @@ class Calculator:
         y1 = arr[2]
         r22 = arr[3]
 
-        if x1==0 and y1==0 and r11==r22:
+        if x1 == 0 and y1 == 0 and r11 == r22:
             return ("Бесчисленное множество точек")
         else:
-            a=-2*x1
-            b=-2*y1
-            c=pow(x1, 2) + pow(y1, 2) + pow(r11, 2) - pow(r22, 2)
+            a = -2 * x1
+            b = -2 * y1
+            c = pow(x1, 2) + pow(y1, 2) + pow(r11, 2) - pow(r22, 2)
 
-            x0 = -a*c/(a*a+b*b)
+            x0 = -a * c / (a * a + b * b)
             y0 = -b * c / (a * a + b * b)
 
-            if c*c>r11 * r11 * (a*a + b*b) + 0.01:
+            if c * c > r11 * r11 * (a * a + b * b) + 0.01:
                 return ("Общих точек нет")
-            elif abs(c*c - r11*r11 * (a*a + b*b)) <0.01:
+            elif abs(c * c - r11 * r11 * (a * a + b * b)) < 0.01:
                 return ("Одна общая точка" + x0 + " " + y0)
             else:
-                d = r11*r11 - c*c / (a*a + b*b)
-                mult = math.sqrt(d/(a*a+b*b))
+                d = r11 * r11 - c * c / (a * a + b * b)
+                mult = math.sqrt(d / (a * a + b * b))
                 ax = x0 + b * mult
                 bx = x0 - b * mult
                 ay = y0 - a * mult
                 by = y0 + a * mult
                 return ("Две общие точки" + '\n' + str(ax) + " " + str(ay) + '\n' + str(bx) + " " + str(by))
 
-        # a = -2 * a1
-        # b = -2 * b1
-        # c = math.pow(a1, 2) + math.pow(b1, 2) + math.pow(r11, 2) - math.pow(r22, 2)
-        # if (c == 0):
-        #
-        #     if (r11 == r22):
-        #         return ("Бесчисленное множество точек")
-        #     else:
-        #
-        #         return ("Общих точек нет");
-        #
-        # return second_equation(str(a) + "," + str(b) + "," + str(c) + "," + str(r11))
+                # a = -2 * a1
+                # b = -2 * b1
+                # c = math.pow(a1, 2) + math.pow(b1, 2) + math.pow(r11, 2) - math.pow(r22, 2)
+                # if (c == 0):
+                #
+                #     if (r11 == r22):
+                #         return ("Бесчисленное множество точек")
+                #     else:
+                #
+                #         return ("Общих точек нет");
+                #
+                # return second_equation(str(a) + "," + str(b) + "," + str(c) + "," + str(r11))
 
 
-        #
+                #
 
-# n = int(input("Введите номер уравнения"))
-#
-# calcc = Calculator
-# if n == 1:
-#     calcc.first("2,2,2,2,2,2")
-# elif n == 2:
-#     calcc.second("20,2,3")
-#     print(calcc.second_equation("20,2,3"))
-# elif n == 3:
-#     calcc.third("20,10,10,20")
-#     print(calcc.third_equation("20,10,10,20"))
+                # n = int(input("Введите номер уравнения"))
+                #
+                # calcc = Calculator
+                # if n == 1:
+                #     calcc.first("2,2,2,2,2,2")
+                # elif n == 2:
+                #     calcc.second("20,2,3")
+                #     print(calcc.second_equation("20,2,3"))
+                # elif n == 3:
+                #     calcc.third("20,10,10,20")
+                #     print(calcc.third_equation("20,10,10,20"))
