@@ -52,16 +52,16 @@ class Calculator:
                     f2 = 0
                     f3 = 0
                     f4 = 0
-                x = np.arange(0, 1000)
-                y = np.arange(0, 1000)
-                idx = np.argwhere(np.diff(np.sign(f - f2)) != 0).reshape(-1) + 0
-                idx2 = np.argwhere(np.diff(np.sign(f3 - f4)) != 0).reshape(-1) + 0
+                # x = np.arange(0, 1000)
+                # y = np.arange(0, 1000)
+                # idx = np.argwhere(np.diff(np.sign(f - f2)) != 0).reshape(-1) + 0
+                # idx2 = np.argwhere(np.diff(np.sign(f3 - f4)) != 0).reshape(-1) + 0
                 line, = plt.plot(t, f, 'b')
                 line, = plt.plot(t, f2, 'r')
                 line, = plt.plot(t, f3, 'b')
                 line, = plt.plot(t, f4, 'r')
-                print (idx)
-                print (idx2)
+                # print (idx)
+                # print (idx2)
                 a += 1
 
             x_line = [-100, 100]
