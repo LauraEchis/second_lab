@@ -107,7 +107,7 @@ class Calculator:
             plt.xlim(-30, 30)
             plt.show()
         except:
-            return ("Неверно введены данные")
+            print("Неожиданная ошибка.")
 
     @staticmethod
     def third(text):
@@ -220,12 +220,18 @@ class Calculator:
             x += 0.0001
 
         if len(res_x) == 0:
-            return ("Общих точек нет")
+            # return ("Общих точек нет")
+            return (0)
         elif len(res_x) == 1:
-            return ("Одна общая точка" + str(res_x[0]) + " " + str(res_y[0]))
+            res_arr = (res_x[0], res_y[0])
+            return res_arr
+            # return ("Одна общая точка" + str(res_x[0]) + " " + str(res_y[0]))
+
         else:
-            return ("Две общие точки на расстоянии 2πk" + '\n' + str(res_x[0]) + " " + str(res_y[0]) + '\n' + str(
-                res_x[1]) + " " + str(res_y[1]))
+            res_arr = (res_x[0], res_y[0], res_x[1], res_y[1])
+            return res_arr
+            # return ("Две общие точки на расстоянии 2πk" + '\n' + str(res_x[0]) + " " + str(res_y[0]) + '\n' + str(
+            #     res_x[1]) + " " + str(res_y[1]))
 
     @staticmethod
     def second_equation(text):
@@ -245,10 +251,13 @@ class Calculator:
         x0 = -a * c / (a * a + b * b)
         y0 = -b * c / (a * a + b * b)
         if (c * c > r * r * (a * a + b * b) + 0.001):
-            return ("Общих точек нет")
+            return 0
+            # return ("Общих точек нет")
         elif (math.fabs(c * c - r * r * (a * a + b * b)) < 0.001):
+            res_arr = (x0, y0)
+            return (res_arr)
 
-            return ("Одна общая точка" + x0 + " " + y0)
+            # return ("Одна общая точка" + x0 + " " + y0)
         else:
             d = r * r - c * c / (a * a + b * b)
             mult = math.sqrt(d / (a * a + b * b))
@@ -256,7 +265,11 @@ class Calculator:
             bx = x0 - b * mult
             ay = y0 - a * mult
             by = y0 + a * mult
-            return ("Две общие точки" + '\n' + str(ax) + " " + str(ay) + '\n' + str(bx) + " " + str(by))
+
+            res_arr = (ax, by, bx, by)
+            return (res_arr)
+
+            # return ("Две общие точки" + '\n' + str(ax) + " " + str(ay) + '\n' + str(bx) + " " + str(by))
 
     @staticmethod
     def third_equation(text):
@@ -284,9 +297,12 @@ class Calculator:
             y0 = -b * c / (a * a + b * b)
 
             if c * c > r11 * r11 * (a * a + b * b) + 0.01:
-                return ("Общих точек нет")
+                return (0)
+                # return ("Общих точек нет")
             elif abs(c * c - r11 * r11 * (a * a + b * b)) < 0.01:
-                return ("Одна общая точка" + x0 + " " + y0)
+                res_arr = [x0, y0]
+                return (res_arr)
+                # return ("Одна общая точка" + x0 + " " + y0)
             else:
                 d = r11 * r11 - c * c / (a * a + b * b)
                 mult = math.sqrt(d / (a * a + b * b))
@@ -294,7 +310,9 @@ class Calculator:
                 bx = x0 - b * mult
                 ay = y0 - a * mult
                 by = y0 + a * mult
-                return ("Две общие точки" + '\n' + str(ax) + " " + str(ay) + '\n' + str(bx) + " " + str(by))
+                res_arr = [ax, ay, bx, by]
+                return (res_arr)
+                # return ("Две общие точки" + '\n' + str(ax) + " " + str(ay) + '\n' + str(bx) + " " + str(by))
 
                 # a = -2 * a1
                 # b = -2 * b1
