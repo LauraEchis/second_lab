@@ -13,6 +13,14 @@ import matplotlib.lines as lines
 
 class Calculator:
     @staticmethod
+    def isfloat(value):
+        try:
+            float(value)
+            return True
+        except ValueError:
+            return False
+
+    @staticmethod
     def first(text):
         arr = []
         arr2 = text.split(",")
@@ -44,14 +52,30 @@ class Calculator:
                     f2 = 0
                     f3 = 0
                     f4 = 0
+                x = np.arange(0, 1000)
+                y = np.arange(0, 1000)
+                idx = np.argwhere(np.diff(np.sign(f - f2)) != 0).reshape(-1) + 0
+                idx2 = np.argwhere(np.diff(np.sign(f3 - f4)) != 0).reshape(-1) + 0
                 line, = plt.plot(t, f, 'b')
                 line, = plt.plot(t, f2, 'r')
                 line, = plt.plot(t, f3, 'b')
                 line, = plt.plot(t, f4, 'r')
+                print (idx)
+                print (idx2)
                 a += 1
+
+            x_line = [-100, 100]
+            y_line = [0, 0]
+
+            x_line_1 = [0, 0]
+            y_line_1 = [-100, 100]
+
             plt.ylim(-10, 10)
             plt.xlim(-10, 10)
             ax.grid(color='grey', linestyle='-', linewidth=0.5)
+            line, = plt.plot(x_line, y_line, 'black', linestyle='-', linewidth=1)
+            line, = plt.plot(x_line_1, y_line_1, 'black', linestyle='-', linewidth=1)
+
             plt.show()
         except:
             print("Неожиданная ошибка.")
@@ -83,7 +107,7 @@ class Calculator:
             plt.xlim(-30, 30)
             plt.show()
         except:
-            print("Неожиданная ошибка.")
+            return ("Неверно введены данные")
 
     @staticmethod
     def third(text):
@@ -156,18 +180,18 @@ class Calculator:
                     if round(x, 1) not in res_x_1 and round(y_arccos_1, 1) not in res_y_1:
                         if round(x, 2) == -0.00:
                             res_x.append(0.00)
-                            res_y.append(round(y_arccos_1, 2))
+                            res_y.append(y_arccos_1)
                             res_x_1.append(0.0)
                             res_y_1.append(round(y_arccos_1, 1))
                         elif round(y_arccos_1, 2) == -0.00:
-                            res_x.append(round(x, 2))
+                            res_x.append(x)
                             res_y.append(0.00)
                             res_x_1.append(round(x, 1))
                             res_y_1.append(0.0)
 
                         else:
-                            res_x.append(round(x, 2))
-                            res_y.append(round(y_arccos_1, 2))
+                            res_x.append(x)
+                            res_y.append(y_arccos_1)
                             res_x_1.append(round(x, 1))
                             res_y_1.append(round(y_arccos_1, 1))
 
@@ -175,18 +199,18 @@ class Calculator:
                     if round(x, 1) not in res_x_1 and round(y_arccos_2, 1) not in res_y_1:
                         if round(x, 2) == -0.00:
                             res_x.append(0.00)
-                            res_y.append(round(y_arccos_2, 2))
+                            res_y.append(y_arccos_2)
                             res_x_1.append(0.0)
                             res_y_1.append(round(y_arccos_2, 1))
                         elif round(y_arccos_1, 2) == -0.00:
-                            res_x.append(round(x, 2))
+                            res_x.append(x)
                             res_y.append(0.00)
                             res_x_1.append(round(x, 1))
                             res_y_1.append(0.0)
 
                         else:
-                            res_x.append(round(x, 2))
-                            res_y.append(round(y_arccos_2, 2))
+                            res_x.append(x, 2)
+                            res_y.append(y_arccos_2, 2)
                             res_x_1.append(round(x, 1))
                             res_y_1.append(round(y_arccos_2, 1))
 

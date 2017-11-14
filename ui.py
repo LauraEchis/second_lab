@@ -5,9 +5,9 @@ root = Tk()
 root.title("Решения уравнений")
 root.geometry("650x400")
 root.resizable(False, False)
-frame1 = Frame(root, bg='cyan', bd=5)
-frame2 = Frame(root, bg='magenta', bd=5)
-frame3 = Frame(root, bg='cyan', bd=5)
+frame1 = Frame(root, bd=5)
+frame2 = Frame(root, bd=5)
+frame3 = Frame(root, bd=5)
 
 
 def first(event):
@@ -62,8 +62,8 @@ button1 = Button(frame1, text='Решить первую систему урав
 button1.bind("<1>", first)
 button1.grid(row=6, columnspan=2)
 
-Label(frame2, bg='magenta').grid(row=0)
-Label(frame2, bg='magenta').grid(row=1)
+Label(frame2).grid(row=0)
+Label(frame2).grid(row=1)
 r = Entry(frame2)
 r.grid(row=2, column=1)
 rl = Label(frame2)
@@ -82,21 +82,21 @@ b.grid(row=4, column=1)
 button2 = Button(frame2, text='Решить вторую систему уравнений')
 button2.bind("<1>", second)
 button2.grid(row=5, columnspan=2)
-Label(frame2, bg='magenta').grid(row=6)
+Label(frame2).grid(row=6)
 
-Label(frame3, bg='cyan').grid(row=0)
+Label(frame3).grid(row=0)
 r1l = Label(frame3)
 r1l['text'] = u'Введите r1'
 r1l.grid(row=1, column=0)
 r1 = Entry(frame3)
 r1.grid(row=1, column=1)
 xl = Label(frame3)
-xl['text'] = u'Введите x'
+xl['text'] = u'Введите x '
 xl.grid(row=2, column=0)
 x = Entry(frame3)
 x.grid(row=2, column=1)
 yl = Label(frame3)
-yl['text'] = u'Введите y'
+yl['text'] = u'Введите y '
 yl.grid(row=3, column=0)
 y = Entry(frame3)
 y.grid(row=3, column=1)
@@ -108,11 +108,11 @@ r2.grid(row=4, column=1)
 button3 = Button(frame3, text='Решить третью систему уравнений')
 button3.bind("<1>", third)
 button3.grid(row=5, columnspan=2)
-Label(frame3, bg='cyan').grid(row=6)
+Label(frame3).grid(row=6)
 
 vivod = Text(root)
 vivod.grid(row=1, columnspan=3)
-vivod.insert(1.0, 'WELCOME\n')
+vivod.insert(1.0, 'Решение систем:\n')
 frame1.grid(row=0, column=0)
 frame2.grid(row=0, column=1)
 frame3.grid(row=0, column=2)
