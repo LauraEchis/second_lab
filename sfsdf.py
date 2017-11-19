@@ -1,14 +1,5 @@
-import math
-import pylab
-from matplotlib import mlab
-import tkinter
-from tkinter import messagebox
-import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import *
-from matplotlib.widgets import TextBox
-from matplotlib.widgets import Button
-import matplotlib.lines as lines
 
 
 class Calculator:
@@ -21,7 +12,7 @@ class Calculator:
             return False
 
     @staticmethod
-    def first(text):
+    def first(text, res):
         arr = []
         arr2 = text.split(",")
         if len(arr2) >= 6:
@@ -56,10 +47,10 @@ class Calculator:
                 # y = np.arange(0, 1000)
                 # idx = np.argwhere(np.diff(np.sign(f - f2)) != 0).reshape(-1) + 0
                 # idx2 = np.argwhere(np.diff(np.sign(f3 - f4)) != 0).reshape(-1) + 0
-                line, = plt.plot(t, f, 'b')
-                line, = plt.plot(t, f2, 'r')
-                line, = plt.plot(t, f3, 'b')
-                line, = plt.plot(t, f4, 'r')
+                plt.plot(t, f, 'b')
+                plt.plot(t, f2, 'r')
+                plt.plot(t, f3, 'b')
+                plt.plot(t, f4, 'r')
                 # print (idx)
                 # print (idx2)
                 a += 1
@@ -73,15 +64,59 @@ class Calculator:
             plt.ylim(-10, 10)
             plt.xlim(-10, 10)
             ax.grid(color='grey', linestyle='-', linewidth=0.5)
-            line, = plt.plot(x_line, y_line, 'black', linestyle='-', linewidth=1)
-            line, = plt.plot(x_line_1, y_line_1, 'black', linestyle='-', linewidth=1)
+            plt.plot(x_line, y_line, 'black', linestyle='-', linewidth=1)
+            plt.plot(x_line_1, y_line_1, 'black', linestyle='-', linewidth=1)
+
+            if len(res) >= 2:
+                # ax.add_artist(plt.Circle((res[0], res[1]), r1/10, color="g", fill=True))
+                a1 = res[0]
+                b1 = res[1]
+
+                while True:
+                    a1 -= 2 * math.pi
+                    if a1 >= -15:
+                        break
+                a_reserved = a1
+                while True:
+                    b1 -= 2 * math.pi
+                    if b1 <= -65:
+                        break
+                while b1 <= 60:
+                    while a1 <= 10:
+                        ax.plot(a1, b1, 'x', color='g', )
+                        a1 += 2 * math.pi
+                    b1 += 2 * math.pi
+                    a1 = a_reserved
+
+            if len(res) > 2:
+                # ax.add_artist(plt.Circle((res[2], res[3]), r2/10, color="g", fill=True))
+                a2 = res[2]
+                b2 = res[3]
+
+                while True:
+                    a2 -= 2 * math.pi
+                    if a2 >= -15:
+                        break
+                a2_reserved = a2
+                print(a2)
+                while True:
+                    b2 -= 2 * math.pi
+                    if b2 <= -65:
+                        break
+                print(b2)
+                while b2 <= 60:
+                    while a2 <= 15:
+                        ax.plot(a2, b2, 'x', color='g', )
+                        a2 += 2 * math.pi
+                    b2 += 2 * math.pi
+                    a2 = a2_reserved
 
             plt.show()
         except:
             print("Неожиданная ошибка.")
 
     @staticmethod
-    def second(text):
+    def second(text, res):
         try:
 
             arr = []
@@ -105,12 +140,21 @@ class Calculator:
             ax.grid(color='grey', linestyle='-', linewidth=0.5)
             plt.ylim(-30, 30)
             plt.xlim(-30, 30)
+
+            if len(res) >= 2:
+                print(len(res))
+                # ax.add_artist(plt.Circle((res[0], res[1]), r1/10, color="g", fill=True))
+                ax.plot(res[0], res[1], 'x', color='g', )
+            if len(res) > 2:
+                # ax.add_artist(plt.Circle((res[2], res[3]), r2/10, color="g", fill=True))
+                ax.plot(res[2], res[3], 'x', color='g')
+
             plt.show()
         except:
             print("Неожиданная ошибка.")
 
     @staticmethod
-    def third(text):
+    def third(text, res):
         try:
             arr = []
             arr2 = text.split(",")
@@ -133,6 +177,14 @@ class Calculator:
             ax.grid(color='grey', linestyle='-', linewidth=0.5)
             plt.ylim(-30, 40)
             plt.xlim(-30, 40)
+
+            if len(res) >= 2:
+                print(len(res))
+                # ax.add_artist(plt.Circle((res[0], res[1]), r1/10, color="g", fill=True))
+                ax.plot(res[0], res[1], 'x', color='g', )
+            if len(res) > 2:
+                # ax.add_artist(plt.Circle((res[2], res[3]), r2/10, color="g", fill=True))
+                ax.plot(res[2], res[3], 'x', color='g')
             plt.show()
         except:
             print("Неожиданная ошибка.")
@@ -266,7 +318,7 @@ class Calculator:
             ay = y0 - a * mult
             by = y0 + a * mult
 
-            res_arr = (ax, by, bx, by)
+            res_arr = (ax, ay, bx, by)
             return (res_arr)
 
             # return ("Две общие точки" + '\n' + str(ax) + " " + str(ay) + '\n' + str(bx) + " " + str(by))

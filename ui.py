@@ -12,20 +12,23 @@ frame3 = Frame(root, bd=5)
 
 def first(event):
     text = a1.get() + ',' + b1.get() + ',' + c1.get() + ',' + a2.get() + ',' + b2.get() + ',' + c2.get()
-    vivod.insert(END, '\nПервая система уравнений\n' + Calculator.first_equation(text) + '\n')
-    Calculator.first(text)
+    res_f = Calculator.first_equation(text)
+    vivod.insert(END, '\nПервая система уравнений\n' + str(res_f) + '\n')
+    Calculator.first(text,res_f)
 
 
 def second(event):
     text = r.get() + ',' + k.get() + ',' + b.get()
-    vivod.insert(END, '\nВторая система уравнений\n' + Calculator.second_equation(text) + '\n')
-    Calculator.second(text)
+    res_s = Calculator.second_equation(text)
+    vivod.insert(END, '\nВторая система уравнений\n' + str(res_s) + '\n')
+    Calculator.second(text,res_s)
 
 
 def third(event):
     text = r1.get() + ',' + x.get() + ',' + y.get() + ',' + r2.get()
-    vivod.insert(END, '\nТретья система уравнений\n' + Calculator.third_equation(text) + '\n')
-    Calculator.third(text)
+    res_t = Calculator.third_equation(text)
+    vivod.insert(END, '\nТретья система уравнений\n' + str(res_t) + '\n')
+    Calculator.third(text,res_t)
 
 
 a1l = Label(frame1)
