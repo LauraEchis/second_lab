@@ -12,23 +12,35 @@ frame3 = Frame(root, bd=5)
 
 def first(event):
     text = a1.get() + ',' + b1.get() + ',' + c1.get() + ',' + a2.get() + ',' + b2.get() + ',' + c2.get()
-    res_f = Calculator.first_equation(text)
-    vivod.insert(END, '\nПервая система уравнений\n' + str(res_f) + '\n')
-    Calculator.first(text,res_f)
+    if Calculator.isfloat(a1.get()) and Calculator.isfloat(b1.get()) and Calculator.isfloat(
+            c1.get()) and Calculator.isfloat(a2.get()) and Calculator.isfloat(b2.get()) and Calculator.isfloat(
+        c2.get()):
+        res_f = Calculator.first_equation(text)
+        vivod.insert(END, '\nПервая система уравнений\n' + str(res_f) + '\n')
+        Calculator.first(text, res_f)
+    else:
+        vivod.insert(END, '\nНеверные данные\n')
 
 
 def second(event):
     text = r.get() + ',' + k.get() + ',' + b.get()
-    res_s = Calculator.second_equation(text)
-    vivod.insert(END, '\nВторая система уравнений\n' + str(res_s) + '\n')
-    Calculator.second(text,res_s)
+    if Calculator.isfloat(r.get()) and Calculator.isfloat(k.get()) and Calculator.isfloat(b.get()):
+        res_s = Calculator.second_equation(text)
+        vivod.insert(END, '\nВторая система уравнений\n' + str(res_s) + '\n')
+        Calculator.second(text, res_s)
+    else:
+        vivod.insert(END, '\nНеверные данные\n')
 
 
 def third(event):
     text = r1.get() + ',' + x.get() + ',' + y.get() + ',' + r2.get()
-    res_t = Calculator.third_equation(text)
-    vivod.insert(END, '\nТретья система уравнений\n' + str(res_t) + '\n')
-    Calculator.third(text,res_t)
+    if Calculator.isfloat(r1.get()) and Calculator.isfloat(x.get()) and Calculator.isfloat(
+            y.get()) and Calculator.isfloat(r2.get()):
+        res_t = Calculator.third_equation(text)
+        vivod.insert(END, '\nТретья система уравнений\n' + str(res_t) + '\n')
+        Calculator.third(text)
+    else:
+        vivod.insert(END, '\nНеверные данные\n')
 
 
 a1l = Label(frame1)
