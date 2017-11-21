@@ -126,8 +126,23 @@ button3.bind("<1>", third)
 button3.grid(row=5, columnspan=2)
 Label(frame3).grid(row=6)
 
+accl = Label(root)
+accl['text'] = u'Введите точность'
+accl.grid(row=1, column=0)
+acc = Entry(root)
+acc.grid(row=1, column=2)
+
+
+def clearViv(event):
+    vivod.delete(2.0, END)
+
+
+cb = Button(root, text='Почистить вывод')
+cb.bind("<1>", clearViv)
+cb.grid(row=2, columnspan=3)
+
 vivod = Text(root)
-vivod.grid(row=1, columnspan=3)
+vivod.grid(row=3, columnspan=3)
 vivod.insert(1.0, 'Решение систем:\n')
 frame1.grid(row=0, column=0)
 frame2.grid(row=0, column=1)
