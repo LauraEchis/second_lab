@@ -34,15 +34,16 @@ class Calculator:
             a = -10
             while a < 10:
                 try:
-                    f = np.arccos((c1 - a1 * np.tan(t)) / b2) + 2 * np.pi * a
+                    f = np.arccos((c1 - a1 * np.tan(t)) / b1) + 2 * np.pi * a
                     f2 = np.arcsin((c2 - a2 * np.cos(t)) / b2) + 2 * np.pi * a
                     f3 = -np.arccos((c1 - a1 * np.tan(t)) / b1) + 2 * np.pi * a
                     f4 = np.pi - np.arcsin((c2 - a2 * np.cos(t)) / b2) + 2 * np.pi * a
                 except BaseException:
-                    f = 0
-                    f2 = 0
-                    f3 = 0
-                    f4 = 0
+                    print (" ")
+                    # f = 0
+                    # f2 = 0
+                    # f3 = 0
+                    # f4 = 0
                 # x = np.arange(0, 1000)
                 # y = np.arange(0, 1000)
                 # idx = np.argwhere(np.diff(np.sign(f - f2)) != 0).reshape(-1) + 0
