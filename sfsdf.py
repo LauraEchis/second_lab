@@ -39,7 +39,7 @@ class Calculator:
                     f3 = -np.arccos((c1 - a1 * np.tan(t)) / b1) + 2 * np.pi * a
                     f4 = np.pi - np.arcsin((c2 - a2 * np.cos(t)) / b2) + 2 * np.pi * a
                 except BaseException:
-                    print (" ")
+                    print(" ")
                     # f = 0
                     # f2 = 0
                     # f3 = 0
@@ -178,9 +178,7 @@ class Calculator:
             ax.grid(color='grey', linestyle='-', linewidth=0.5)
             plt.ylim(-30, 40)
             plt.xlim(-30, 40)
-
             if len(res) >= 2:
-                print(len(res))
                 # ax.add_artist(plt.Circle((res[0], res[1]), r1/10, color="g", fill=True))
                 ax.plot(res[0], res[1], 'x', color='g', )
             if len(res) > 2:
@@ -340,7 +338,7 @@ class Calculator:
         r22 = arr[3]
 
         if x1 == 0 and y1 == 0 and r11 == r22:
-            return ("Бесчисленное множество точек")
+            return [0]
         else:
             a = -2 * x1
             b = -2 * y1
@@ -350,7 +348,7 @@ class Calculator:
             y0 = -b * c / (a * a + b * b)
 
             if c * c > r11 * r11 * (a * a + b * b) + 0.01:
-                return (0)
+                return [0]
                 # return ("Общих точек нет")
             elif abs(c * c - r11 * r11 * (a * a + b * b)) < 0.01:
                 res_arr = [x0, y0]

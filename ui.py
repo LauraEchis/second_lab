@@ -16,7 +16,7 @@ def first(event):
             c1.get()) and Calculator.isfloat(a2.get()) and Calculator.isfloat(b2.get()) and Calculator.isfloat(
         c2.get()):
         res_f = Calculator.first_equation(text)
-        vivod.insert(END, '\nПервая система уравнений\n' + str(res_f) + '\n')
+        vivod.insert(END, '\nПервая система уравнений\n' + str(res_f) + "±2πk" + '\n')
         Calculator.first(text, res_f)
     else:
         vivod.insert(END, '\nНеверные данные\n')
@@ -38,7 +38,7 @@ def third(event):
             y.get()) and Calculator.isfloat(r2.get()):
         res_t = Calculator.third_equation(text)
         vivod.insert(END, '\nТретья система уравнений\n' + str(res_t) + '\n')
-        Calculator.third(text)
+        Calculator.third(text, res_t)
     else:
         vivod.insert(END, '\nНеверные данные\n')
 
