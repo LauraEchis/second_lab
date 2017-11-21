@@ -195,19 +195,26 @@ class Calculator:
         arr2 = text.split(",")
         if len(arr2) == 7:
             for i in range(7):
-                arr.append(float(arr2[i]))
+                arr.append(arr2[i])
         else:
             for i in range(6):
                 arr.append(0)
             arr.append(0.01)
-        a1 = arr[0]
-        b1 = arr[1]
-        c1 = arr[2]
-        a2 = arr[3]
-        b2 = arr[4]
-        c2 = arr[5]
-        accuracy = arr[6]
-        print(arr)
+        a1 = float(arr[0])
+        b1 = float(arr[1])
+        c1 = float(arr[2])
+        a2 = float(arr[3])
+        b2 = float(arr[4])
+        c2 = float(arr[5])
+        if Calculator.isfloat(arr[6]):
+            acc = float(arr[6])
+        else:
+            acc = 0.01
+        if str(acc).isdigit():
+            acc1 = 10 ** (-acc)
+        else:
+            acc1 = 0.0001
+            acc = 4
         x = -math.pi
         x1 = 0
         pii_i2 = math.pi
@@ -270,7 +277,7 @@ class Calculator:
                             # print(str(round(x, 2)) + " " + str(round(y_arccos_2, 2)))
             except BaseException:
                 pass
-            x += accuracy
+            x += acc1
 
         if len(res_x) == 0:
             # return ("Общих точек нет")
@@ -292,23 +299,32 @@ class Calculator:
         arr2 = text.split(",")
         if len(arr2) == 4:
             for i in range(4):
-                arr.append(float(arr2[i]))
+                arr.append(arr2[i])
         else:
             for i in range(3):
                 arr.append(0)
             arr.append(0.01)
-        r = arr[0]
+        r = float(arr[0])
         b = -1
-        a = arr[1]
-        c = arr[2]
-        accuracy = arr[3]
+        a = float(arr[1])
+        c = float(arr[2])
+
+        if Calculator.isfloat(arr[3]):
+            acc = float(arr[3])
+        else:
+            acc = 0.01
+        if str(acc).isdigit():
+            acc1 = 10 ** (-acc)
+        else:
+            acc1 = 0.001
+            acc = 3
         # return (r + " " + b + " " + a + " " + c)
         x0 = -a * c / (a * a + b * b)
         y0 = -b * c / (a * a + b * b)
-        if (c * c > r * r * (a * a + b * b) + accuracy):
+        if (c * c > r * r * (a * a + b * b) + acc1):
             return 0
             # return ("Общих точек нет")
-        elif (math.fabs(c * c - r * r * (a * a + b * b)) < accuracy):
+        elif (math.fabs(c * c - r * r * (a * a + b * b)) < acc1):
             res_arr = (x0, y0)
             return (res_arr)
 
@@ -332,19 +348,27 @@ class Calculator:
         arr2 = text.split(",")
         if len(arr2) >= 5:
             for i in range(5):
-                arr.append(float(arr2[i]))
+                arr.append(arr2[i])
         else:
             for i in range(4):
                 arr.append(0)
             arr.append(0.01)
-        r11 = arr[0]
-        x1 = arr[1]
-        y1 = arr[2]
-        r22 = arr[3]
-        accuracy = arr[4]
+        r11 = float(arr[0])
+        x1 = float(arr[1])
+        y1 = float(arr[2])
+        r22 = float(arr[3])
+        if Calculator.isfloat(arr[4]):
+            acc = float(arr[4])
+        else:
+            acc = 0.01
+        if str(acc).isdigit():
+            acc1 = 10 ** (-acc)
+        else:
+            acc1 = 0.001
+            acc = 3
 
         if x1 == 0 and y1 == 0 and r11 == r22:
-            return [0]
+            return [-1]
         else:
             a = -2 * x1
             b = -2 * y1
@@ -353,10 +377,10 @@ class Calculator:
             x0 = -a * c / (a * a + b * b)
             y0 = -b * c / (a * a + b * b)
 
-            if c * c > r11 * r11 * (a * a + b * b) + accuracy:
+            if c * c > r11 * r11 * (a * a + b * b) + acc1:
                 return [0]
                 # return ("Общих точек нет")
-            elif abs(c * c - r11 * r11 * (a * a + b * b)) < accuracy:
+            elif abs(c * c - r11 * r11 * (a * a + b * b)) < acc1:
                 res_arr = [x0, y0]
                 return (res_arr)
                 # return ("Одна общая точка" + x0 + " " + y0)

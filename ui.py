@@ -11,35 +11,99 @@ frame3 = Frame(root, bd=5)
 
 
 def first(event):
-    text = a1.get() + ',' + b1.get() + ',' + c1.get() + ',' + a2.get() + ',' + b2.get() + ',' + c2.get()
+    text = a1.get() + ',' + b1.get() + ',' + c1.get() + ',' + a2.get() + ',' + b2.get() + ',' + c2.get() + ',' + acc.get()
 
     if Calculator.isfloat(a1.get()) and Calculator.isfloat(b1.get()) and Calculator.isfloat(
             c1.get()) and Calculator.isfloat(a2.get()) and Calculator.isfloat(b2.get()) and Calculator.isfloat(
-        c2.get()):
+                c2.get() and Calculator.isfloat(acc.get())):
         res_f = Calculator.first_equation(text)
-        vivod.insert(END, '\nПервая система уравнений\n' + str(res_f) + "±2πk" + '\n')
-        Calculator.first(text, res_f)
+        acc_print = acc.get()
+        res_to_print = []
+        if not (Calculator.isfloat(acc_print) and int(acc_print) > 0):
+            acc_print = 3
+        else:
+            acc_print = int(acc_print)
+        print(acc_print)
+        if len(res_f) == 1:
+            vivod.insert(END, '\nПервая система уравнений\n' + "Нет общих точек" + '\n')
+            Calculator.first(text, res_f)
+        elif len(res_f) == 2:
+            vivod.insert(END, '\nПервая система уравнений\n' + str(round(res_f[0], acc_print)) + " " + str(
+                round(res_f[1], acc_print)) + "±2πk" + '\n')
+            Calculator.first(text, res_f)
+        else:
+            vivod.insert(END, '\nПервая система уравнений\n' + str(round(float(res_f[0]), acc_print)) + " " + str(
+                round(float(res_f[1]), acc_print)) + ", " + str(round(float(res_f[2]), acc_print)) + " "
+                         + str(round(float(res_f[3]), acc_print)) + " ±2πk" + '\n')
+            Calculator.first(text, res_f)
     else:
         vivod.insert(END, '\nНеверные данные\n')
 
 
 def second(event):
-    text = r.get() + ',' + k.get() + ',' + b.get()
-    if Calculator.isfloat(r.get()) and Calculator.isfloat(k.get()) and Calculator.isfloat(b.get()):
+    text = r.get() + ',' + k.get() + ',' + b.get() + ',' + acc.get()
+    if Calculator.isfloat(r.get()) and Calculator.isfloat(k.get()) and Calculator.isfloat(
+                    b.get() and Calculator.isfloat(acc.get())):
         res_s = Calculator.second_equation(text)
-        vivod.insert(END, '\nВторая система уравнений\n' + str(res_s) + '\n')
-        Calculator.second(text, res_s)
+        #     vivod.insert(END, '\nВторая система уравнений\n' + str(res_s) + '\n')
+        #     Calculator.second(text, res_s)
+        # else:
+        #     vivod.insert(END, '\nНеверные данные\n')
+
+        acc_print = acc.get()
+        res_to_print = []
+        if not (Calculator.isfloat(acc_print) and int(acc_print) > 0):
+            acc_print = 3
+        else:
+            acc_print = int(acc_print)
+        print(acc_print)
+        if len(res_s) == 1:
+            vivod.insert(END, '\nВторая система уравнений\n' + "Нет общих точек" + '\n')
+            Calculator.first(text, res_s)
+        elif len(res_s) == 2:
+            vivod.insert(END, '\nВторая система уравнений\n' + str(round(res_s[0], acc_print)) + " " + str(
+                round(res_s[1], acc_print)) + '\n')
+            Calculator.first(text, res_s)
+        else:
+            vivod.insert(END, '\nВторая система уравнений\n' + str(round(float(res_s[0]), acc_print)) + " " + str(
+                round(float(res_s[1]), acc_print)) + ", " + str(round(float(res_s[2]), acc_print)) + " "
+                         + str(round(float(res_s[3]), acc_print)) + '\n')
+            Calculator.second(text, res_s)
     else:
         vivod.insert(END, '\nНеверные данные\n')
 
 
 def third(event):
-    text = r1.get() + ',' + x.get() + ',' + y.get() + ',' + r2.get()
+    text = r1.get() + ',' + x.get() + ',' + y.get() + ',' + r2.get() + ',' + acc.get()
     if Calculator.isfloat(r1.get()) and Calculator.isfloat(x.get()) and Calculator.isfloat(
-            y.get()) and Calculator.isfloat(r2.get()):
+            y.get()) and Calculator.isfloat(
+                r2.get() and Calculator.isfloat(acc.get())):
         res_t = Calculator.third_equation(text)
-        vivod.insert(END, '\nТретья система уравнений\n' + str(res_t) + '\n')
-        Calculator.third(text, res_t)
+        #     vivod.insert(END, '\nТретья система уравнений\n' + str(res_t) + '\n')
+        #     Calculator.third(text, res_t)
+        # else:
+        #     vivod.insert(END, '\nНеверные данные\n')
+
+        acc_print = acc.get()
+        res_to_print = []
+        if not (Calculator.isfloat(acc_print) and int(acc_print) > 0):
+            acc_print = 3
+        else:
+            acc_print = int(acc_print)
+        print(acc_print)
+        if len(res_t) == 1:
+            vivod.insert(END,
+                         '\nТретья система уравнений\n' + "где 0 - нет общих точек, -1 - бесчисленное множество точек" + '\n')
+            Calculator.first(text, res_t)
+        elif len(res_t) == 2:
+            vivod.insert(END, '\nТретья система уравнений\n' + str(round(res_t[0], acc_print)) + " " + str(
+                round(res_t[1], acc_print)) + "±2πk" + '\n')
+            Calculator.first(text, res_t)
+        else:
+            vivod.insert(END, '\nТретья система уравнений\n' + str(round(float(res_t[0]), acc_print)) + " " + str(
+                round(float(res_t[1]), acc_print)) + ", " + str(round(float(res_t[2]), acc_print)) + " "
+                         + str(round(float(res_t[3]), acc_print)) + " ±2πk" + '\n')
+            Calculator.third(text, res_t)
     else:
         vivod.insert(END, '\nНеверные данные\n')
 
@@ -128,7 +192,7 @@ Label(frame3).grid(row=6)
 
 accl = Label(root)
 accl['text'] = u'Введите точность'
-accl.grid(row=1, column=0)
+accl.grid(row=1, column=1)
 acc = Entry(root)
 acc.grid(row=1, column=2)
 
