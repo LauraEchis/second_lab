@@ -12,6 +12,7 @@ frame3 = Frame(root, bd=5)
 
 def first(event):
     text = a1.get() + ',' + b1.get() + ',' + c1.get() + ',' + a2.get() + ',' + b2.get() + ',' + c2.get()
+
     if Calculator.isfloat(a1.get()) and Calculator.isfloat(b1.get()) and Calculator.isfloat(
             c1.get()) and Calculator.isfloat(a2.get()) and Calculator.isfloat(b2.get()) and Calculator.isfloat(
         c2.get()):
