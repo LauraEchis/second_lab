@@ -368,7 +368,9 @@ class Calculator:
             acc = 3
 
         if x1 == 0 and y1 == 0 and r11 == r22:
-            return [-1]
+            x0=-1
+            res_arr = [x0]
+            return res_arr
         else:
             a = -2 * x1
             b = -2 * y1
@@ -378,7 +380,9 @@ class Calculator:
             y0 = -b * c / (a * a + b * b)
 
             if c * c > r11 * r11 * (a * a + b * b) + acc1:
-                return [0]
+                x0=0
+                res_arr = [x0]
+                return res_arr
                 # return ("Общих точек нет")
             elif abs(c * c - r11 * r11 * (a * a + b * b)) < acc1:
                 res_arr = [x0, y0]

@@ -59,11 +59,11 @@ def second(event):
         print(acc_print)
         if len(res_s) == 1:
             vivod.insert(END, '\nВторая система уравнений\n' + "Нет общих точек" + '\n')
-            Calculator.first(text, res_s)
+            Calculator.second(text, res_s)
         elif len(res_s) == 2:
             vivod.insert(END, '\nВторая система уравнений\n' + str(round(res_s[0], acc_print)) + " " + str(
                 round(res_s[1], acc_print)) + '\n')
-            Calculator.first(text, res_s)
+            Calculator.second(text, res_s)
         else:
             vivod.insert(END, '\nВторая система уравнений\n' + str(round(float(res_s[0]), acc_print)) + " " + str(
                 round(float(res_s[1]), acc_print)) + ", " + str(round(float(res_s[2]), acc_print)) + " "
@@ -93,12 +93,12 @@ def third(event):
         print(acc_print)
         if len(res_t) == 1:
             vivod.insert(END,
-                         '\nТретья система уравнений\n' + "где 0 - нет общих точек, -1 - бесчисленное множество точек" + '\n')
-            Calculator.first(text, res_t)
+                         '\nТретья система уравнений\n' + "где 0 - нет общих точек, -1 - бесчисленное множество точек" + ' --(' + str(res_t[0]) + ')' '\n')
+            Calculator.third(text, res_t)
         elif len(res_t) == 2:
             vivod.insert(END, '\nТретья система уравнений\n' + str(round(res_t[0], acc_print)) + " " + str(
                 round(res_t[1], acc_print)) + "±2πk" + '\n')
-            Calculator.first(text, res_t)
+            Calculator.third(text, res_t)
         else:
             vivod.insert(END, '\nТретья система уравнений\n' + str(round(float(res_t[0]), acc_print)) + " " + str(
                 round(float(res_t[1]), acc_print)) + ", " + str(round(float(res_t[2]), acc_print)) + " "
