@@ -371,13 +371,18 @@ class Calculator:
             x0=-1
             res_arr = [x0]
             return res_arr
+        elif x1==0 and y1==0 and r11!=r22:
+            x0 = 0
+            res_arr = [x0]
+            return res_arr
         else:
             a = -2 * x1
             b = -2 * y1
             c = pow(x1, 2) + pow(y1, 2) + pow(r11, 2) - pow(r22, 2)
 
-            x0 = -a * c / (a * a + b * b)
-            y0 = -b * c / (a * a + b * b)
+
+            x0 = - a * c / (a * a + b * b)
+            y0 = - b * c / (a * a + b * b)
 
             if c * c > r11 * r11 * (a * a + b * b) + acc1:
                 x0=0

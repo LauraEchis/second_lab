@@ -97,12 +97,12 @@ def third(event):
             Calculator.third(text, res_t)
         elif len(res_t) == 2:
             vivod.insert(END, '\nТретья система уравнений\n' + str(round(res_t[0], acc_print)) + " " + str(
-                round(res_t[1], acc_print)) + "±2πk" + '\n')
+                round(res_t[1], acc_print))  + '\n')
             Calculator.third(text, res_t)
         else:
             vivod.insert(END, '\nТретья система уравнений\n' + str(round(float(res_t[0]), acc_print)) + " " + str(
                 round(float(res_t[1]), acc_print)) + ", " + str(round(float(res_t[2]), acc_print)) + " "
-                         + str(round(float(res_t[3]), acc_print)) + " ±2πk" + '\n')
+                         + str(round(float(res_t[3]), acc_print))  + '\n')
             Calculator.third(text, res_t)
     else:
         vivod.insert(END, '\nНеверные данные\n')
